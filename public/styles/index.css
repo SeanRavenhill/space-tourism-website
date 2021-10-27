@@ -1,0 +1,216 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+	/* Colors */
+	--clr-dark: 230 35% 7%;
+	--clr-light: 231 77% 90%;
+	--clr-white: 0 0% 100%;
+
+	/* Font-Sizes */
+	--fs-h1: 9.375rem; /* 150px */
+	--fs-h2: 6.25rem; /* 100px */
+	--fs-h3: 3.5rem; /* 56px */
+	--fs-h4: 2rem; /* 32px */
+	--fs-h5: 1.75rem; /* 28px */
+	--fs-sub-h1: 1.75rem; /* 28px */
+	--fs-sub-h2: 0.875rem; /* 14px */
+	--fs-nav: 1rem; /* 16px */
+	--fs-body: 1.125rem; /* 18px */
+
+	/* Letter Spacings */
+	--fls-1: 4.75px;
+	--fls-2: 2.7px;
+	--fls-3: 2.35px;
+
+	/* Font-Families */
+	--ff-serif: "Bellefair", serif;
+	--ff-sans-cond: "Barlow Condensed", sans-serif;
+	--ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media only screen and (max-width: 375px) {
+	:root {
+		--fs-h1: 5rem; /* 80px */
+		--fs-h2: 3.5rem; /* 56px */
+		--fs-h3: 1.5rem; /* 24px */
+		--fs-h4: 1rem; /* 16px */
+		--fs-h5: 1rem; /* 16px */
+		--fs-body: 0.9375rem; /* 15px */
+	}
+}
+
+@media only screen and (min-width: 376px) and (max-width: 810px) {
+	:root {
+		--fs-h2: 5rem; /* 80px */
+		--fs-h3: 2.5rem; /* 40px */
+		--fs-h4: 1.5rem; /* 24px */
+		--fs-h5: 1.25rem; /* 20px */
+		--fs-nav: 0.875rem; /* 14px */
+		--fs-body: 1rem; /* 16px */
+	}
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+	font-family: var(--ff-sans-normal);
+	font-size: var(--fs-body);
+	color: hsl(var(--clr-white));
+	background: hsl(var(--clr-dark));
+	min-height: 100vh;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+.flex {
+	display: flex;
+	gap: var(--gap, 1rem);
+}
+
+.grid {
+	display: grid;
+	gap: var(--gap, 1rem);
+}
+
+.container {
+    outline: 1px solid red;
+    margin-inline: auto;
+}
+
+/* hides content intented for screen readers */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap; /* added line */
+	border: 0;
+}
+
+/* colors */
+
+.bg-dark {background-color: hsl(var(--clr-dark));}
+.bg-accent {background-color: hsl(var(--clr-light));}
+.bg-white {background-color: hsl(var(--clr-white));}
+
+.text-dark {color: hsl(var(--clr-dark));}
+.text-accent {color: hsl(var(--clr-light));}
+.text-white {color: hsl(var(--clr-white));}
+
+/* typography */
+
+.ff-serif {font-family: var(--ff-serif);}
+.ff-sans-cond {font-family: var(--ff-sans-cond);}
+.ff-sans-normal {font-family: var(--ff-sans-normal);}
+
+.letter-spacing-1 {letter-spacing: var(--fls-1);}
+.letter-spacing-2 {letter-spacing: var(--fls-2);}
+.letter-spacing-3 {letter-spacing: var(--fls-3);}
+
+.uppercase {text-transform: uppercase;}
+
+.fs-h1 {font-size: var(--fs-h1);}
+.fs-h2 {font-size: var(--fs-h2);}
+.fs-h3 {font-size: var(--fs-h3);}
+.fs-h4 {font-size: var(--fs-h4);}
+.fs-h5 {font-size: var(--fs-h5);}
+.fs-sub-h1 {font-size: var(--fs-sub-h1);}
+.fs-sub-h2 {font-size: var(--fs-sub-h2);}
+.fs-nav {font-size: var(--fs-nav);}
+.fs-body {font-size: var(--fs-body);}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+	line-height: 1.1;
+}
+
+
+/* ------------------- */
+/* Layout              */
+/* ------------------- */
+
+/* Home */
