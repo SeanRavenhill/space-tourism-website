@@ -56,7 +56,7 @@
 /* Reset               */
 /* ------------------- */
 
-/* https://piccalil.li/blog/a-modern-css-reset/ */
+/* My own modification of https://piccalil.li/blog/a-modern-css-reset/ */
 
 /* Box sizing rules */
 *,
@@ -77,6 +77,17 @@ blockquote,
 dl,
 dd {
 	margin: 0;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -143,17 +154,24 @@ select {
 
 .flex {
 	display: flex;
-	gap: var(--gap, 1rem);
+	/* gap: var(--gap, 1rem); */
 }
 
 .grid {
 	display: grid;
-	gap: var(--gap, 1rem);
+	/* gap: var(--gap, 1rem); */
+}
+
+.block {
+    display: block;
 }
 
 .container {
-    outline: 1px solid red;
     margin-inline: auto;
+}
+
+.flow {
+    margin-top: var(--margin-top, 16px);
 }
 
 /* hides content intented for screen readers */
@@ -170,7 +188,6 @@ select {
 }
 
 /* colors */
-
 .bg-dark {background-color: hsl(var(--clr-dark));}
 .bg-accent {background-color: hsl(var(--clr-light));}
 .bg-white {background-color: hsl(var(--clr-white));}
@@ -180,7 +197,6 @@ select {
 .text-white {color: hsl(var(--clr-white));}
 
 /* typography */
-
 .ff-serif {font-family: var(--ff-serif);}
 .ff-sans-cond {font-family: var(--ff-sans-cond);}
 .ff-sans-normal {font-family: var(--ff-sans-normal);}
@@ -201,16 +217,227 @@ select {
 .fs-nav {font-size: var(--fs-nav);}
 .fs-body {font-size: var(--fs-body);}
 
-.fs-900,
-.fs-800,
-.fs-700,
-.fs-600 {
+/* .fs-h1,
+.fs-h2,
+.fs-h3,
+.fs-h4 {
 	line-height: 1.1;
+} */
+
+.line-height-1 {line-height: 32px;}
+.line-height-2 {line-height: 28px;}
+.line-height-3 {line-height: 25px;}
+
+/* ------------------- */
+/* Components          */
+/* ------------------- */
+
+/* large-btn */
+
+.large-btn {
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    width: 274px;
+    height: 274px;
+    border-radius: 50%;
+    outline: 0px solid hsl( var(--clr-white) / .1);
+    transition: outline 500ms ease-in-out;
 }
 
+.large-btn:hover,
+.large-btn:focus {
+    outline: 88px solid hsl( var(--clr-white) / .1);
+}
+
+/* large-btn specific Media Queries */
+
+@media only screen and (max-width: 375px) {
+    .large-btn {
+        margin-top: 81px;
+        font-size: 1.25rem;
+        width: 150px;
+        height: 150px;
+    }
+    
+    .large-btn:hover,
+    .large-btn:focus {
+        outline: 48px solid hsl( var(--clr-white) / .1);
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 810px) {
+	.large-btn {
+        margin-top: 156px;
+        width: 242px;
+        height: 242px;
+    }
+    
+    .large-btn:hover,
+    .large-btn:focus {
+        outline: 78px solid hsl( var(--clr-white) / .1);
+    }
+}
+
+/* primary-header and primary-navigation */
+
+.primary-header {
+    /* border: 1px solid red; */
+    align-items: center ;
+    margin-inline: auto;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+.primary-navigation {
+    gap: 48px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: hsl( var(--clr-dark) / .95);
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+}
+
+@supports (backdrop-filter: blur(82px)) {
+    .primary-navigation {
+        background: hsl( var(--clr-white) / .04);
+        backdrop-filter: blur(82px);
+    }
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: 12px;
+}
+
+.primary-navigation > li {
+    cursor: pointer;
+    border-bottom: 3px solid hsl( var(--clr-white) / 0 );
+}
+
+.primary-navigation > li:hover,
+.primary-navigation > li:focus {
+    border-color: hsl( var(--clr-white) / .5);
+}
+
+.primary-navigation > li.active {
+    border-color: hsl( var(--clr-white) / 1); 
+}
+
+@media only screen and (max-width: 375px) {
+    .primary-header {
+        padding-inline: 24px;
+        margin-top: 24px;
+        margin-inline: auto;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px
+    }
+
+    .primary-navigation {
+        gap: 0;
+        position: fixed;
+        z-index: 1000;
+        flex-direction: column;
+        inset: 0 0 0 121px;
+        transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
+    }
+
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0);
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+        order: 3;
+        z-index: 2000;
+        background: transparent;
+        background-image: url(../assets/shared/icon-hamburger.svg);
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 21px;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .primary-navigation > :first-child {
+        margin-top: 118px;
+    }
+
+    .primary-navigation > * {
+        margin-left: 32px;
+    }
+
+    .primary-navigation > li {
+        cursor: pointer;
+        line-height: 41px;
+        margin-bottom: 2px;
+        border-bottom: 0;
+        border-right: 4px solid hsl( var(--clr-white) / 0 );
+    }
+    
+    .primary-navigation > li:hover,
+    .primary-navigation > li:focus {
+        border-color: hsl( var(--clr-white) / .5);
+    }
+    
+    .primary-navigation > li.active {
+        border-color: hsl( var(--clr-white) / 1); 
+    }
+
+}
+
+@media only screen and (min-width: 376px) and (max-width: 810px) {
+
+}
 
 /* ------------------- */
 /* Layout              */
 /* ------------------- */
 
 /* Home */
+.home {
+    background-image: url(../assets/home/background-home-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* ------------------- */
+/* Media Queries       */
+/* ------------------- */
+@media only screen and (max-width: 375px) {
+    .container {
+        margin-top: 48px;
+        padding-inline: 24px;
+        text-align: center;
+    }
+
+	.home {
+        background-image: url(../assets/home/background-home-mobile.jpg);
+        background-position: center bottom;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 810px) {
+	.home {
+        background-image: url(../assets/home/background-home-tablet.jpg);
+        background-position: center bottom;
+    }
+}
