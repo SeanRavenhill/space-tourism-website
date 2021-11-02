@@ -30,7 +30,7 @@
 	--ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 570px) {
 	:root {
 		--fs-h1: 5rem; /* 80px */
 		--fs-h2: 3.5rem; /* 56px */
@@ -41,7 +41,7 @@
 	}
 }
 
-@media only screen and (min-width: 376px) and (max-width: 810px) {
+@media only screen and (min-width: 570px) and (max-width: 810px) {
 	:root {
 		--fs-h2: 5rem; /* 80px */
 		--fs-h3: 2.5rem; /* 40px */
@@ -56,7 +56,7 @@
 /* Reset               */
 /* ------------------- */
 
-/* My own modification of https://piccalil.li/blog/a-modern-css-reset/ */
+/* Sean Ravenhill modification of https://piccalil.li/blog/a-modern-css-reset/ */
 
 /* Box sizing rules */
 *,
@@ -79,7 +79,7 @@ dd {
 	margin: 0;
 }
 
-
+/* Set all headers and paragraphs to regular font weight by default */
 h1,
 h2,
 h3,
@@ -151,15 +151,12 @@ select {
 /* ------------------- */
 /* Utility classes     */
 /* ------------------- */
-
 .flex {
 	display: flex;
-	/* gap: var(--gap, 1rem); */
 }
 
 .grid {
 	display: grid;
-	/* gap: var(--gap, 1rem); */
 }
 
 .block {
@@ -173,6 +170,11 @@ select {
 .flow {
     margin-top: var(--margin-top, 16px);
 }
+
+/* .ch-width {
+    min-width: 30ch;
+    max-width: 50ch;
+} */
 
 /* hides content intented for screen readers */
 .sr-only {
@@ -217,12 +219,12 @@ select {
 .fs-nav {font-size: var(--fs-nav);}
 .fs-body {font-size: var(--fs-body);}
 
-/* .fs-h1,
+.fs-h1,
 .fs-h2,
 .fs-h3,
 .fs-h4 {
 	line-height: 1.1;
-} */
+}
 
 .line-height-1 {line-height: 32px;}
 .line-height-2 {line-height: 28px;}
@@ -233,7 +235,6 @@ select {
 /* ------------------- */
 
 /* large-btn */
-
 .large-btn {
     display: inline-grid;
     justify-content: center;
@@ -253,8 +254,7 @@ select {
 }
 
 /* large-btn specific Media Queries */
-
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 570px) {
     .large-btn {
         margin-top: 81px;
         font-size: 1.25rem;
@@ -268,7 +268,7 @@ select {
     }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 810px) {
+@media only screen and (min-width: 571px) and (max-width: 810px) {
 	.large-btn {
         margin-top: 156px;
         width: 242px;
@@ -282,9 +282,7 @@ select {
 }
 
 /* primary-header and primary-navigation */
-
 .primary-header {
-    /* border: 1px solid red; */
     align-items: center ;
     margin-inline: auto;
 }
@@ -336,7 +334,8 @@ select {
     border-color: hsl( var(--clr-white) / 1); 
 }
 
-@media only screen and (max-width: 375px) {
+/* primary-header and primary-navigation specific  */
+@media only screen and (max-width: 570px) {
     .primary-header {
         padding-inline: 24px;
         margin-top: 24px;
@@ -370,10 +369,16 @@ select {
         background: transparent;
         background-image: url(../assets/shared/icon-hamburger.svg);
         background-repeat: no-repeat;
+        background-position: center center;
         width: 24px;
         height: 21px;
         border: 0;
         cursor: pointer;
+    }
+
+    .mobile-nav-toggle:focus-visible {
+        outline: 3px solid hsl(var(--clr-white));
+        outline-offset: 5px;
     }
 
     .primary-navigation > :first-child {
@@ -400,11 +405,36 @@ select {
     .primary-navigation > li.active {
         border-color: hsl( var(--clr-white) / 1); 
     }
-
 }
 
-@media only screen and (min-width: 376px) and (max-width: 810px) {
+@media only screen and (min-width: 571px) and (max-width: 810px) {
+    .primary-header {
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 39px;
+    }
+    .primary-navigation {
+        gap: 37px;
+        padding: 35px 48px 0 48px;
+    }
+    .primary-navigation span {
+        display: none;
+    }
 
+    .primary-navigation > li {
+        cursor: pointer;
+        padding-bottom: 34px;
+        border-bottom: 3px solid hsl( var(--clr-white) / 0 );
+    }
+    
+    .primary-navigation > li:hover,
+    .primary-navigation > li:focus {
+        border-color: hsl( var(--clr-white) / .5);
+    }
+    
+    .primary-navigation > li.active {
+        border-color: hsl( var(--clr-white) / 1); 
+    }
 }
 
 /* ------------------- */
@@ -419,11 +449,12 @@ select {
     background-position: center center;
 }
 
-/* ------------------- */
-/* Media Queries       */
-/* ------------------- */
-@media only screen and (max-width: 375px) {
+/* Home specific Media Queries */
+@media only screen and (max-width: 570px) {
     .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-top: 48px;
         padding-inline: 24px;
         text-align: center;
@@ -435,7 +466,20 @@ select {
     }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 810px) {
+@media only screen and (min-width: 571px) and (max-width: 810px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 106px;
+        padding-inline: 159px;
+        text-align: center;
+    }
+
+    .flow {
+        --margin-top: 24px;
+    }
+
 	.home {
         background-image: url(../assets/home/background-home-tablet.jpg);
         background-position: center bottom;
