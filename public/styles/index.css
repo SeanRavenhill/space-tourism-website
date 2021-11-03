@@ -96,9 +96,11 @@ ol[role="list"] {
 	list-style: none;
 }
 
+/* Removes default 40px padding-left and 18px margin top and bottom on lists */
 ul,
 ol {
 	padding: 0;
+    margin: 0;
 }
 
 /* Set core root defaults */
@@ -165,11 +167,6 @@ select {
 .container { margin-inline: auto; }
 
 .flow { margin-top: var(--margin-top, 16px); }
-
-/* .ch-width {
-    min-width: 30ch;
-    max-width: 50ch;
-} */
 
 /* hides content intented for screen readers */
 .sr-only {
@@ -290,6 +287,7 @@ select {
     gap: 50px;
     list-style: none;
     background: hsl( var(--clr-dark) / .95);
+    background: hsl( var(--clr-white) / .04);
 }
 
 .mobile-nav-toggle {
@@ -314,7 +312,6 @@ select {
 
 .primary-navigation > li {
     cursor: pointer;
-    padding-bottom: 31.5px;
     border-bottom: 3px solid hsl( var(--clr-white) / 0 );
 }
 
@@ -327,7 +324,7 @@ select {
     border-color: hsl( var(--clr-white) / 1); 
 }
 
-/* primary-header and primary-navigation specific  */
+/* primary-header and primary-navigation specific Media Queries  */
 @media only screen and (max-width: 570px) {
     .primary-header {
         margin: 24px 24px 0 24px;
@@ -435,7 +432,7 @@ select {
 
 @media only screen and (min-width: 811px) {
     .primary-header {
-        margin: 40px 0 0 55px;
+        margin: 40px 0 0 0;
         justify-content: space-between;
     }
 
@@ -461,7 +458,7 @@ select {
 
     .primary-navigation {
         padding-top: 34.5px;
-        padding-inline: clamp(10px, 7vw, 123px);
+        padding-inline: clamp(10px, 12vw, 165px);
     }
 
     .primary-navigation > li {
@@ -484,7 +481,6 @@ select {
 /* Home specific Media Queries */
 @media only screen and (max-width: 570px) {
     .container {
-        display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 48px;
@@ -500,7 +496,6 @@ select {
 
 @media only screen and (min-width: 571px) and (max-width: 810px) {
     .container {
-        display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 106px;
@@ -516,4 +511,23 @@ select {
         background-image: url(../assets/home/background-home-tablet.jpg);
         background-position: center bottom;
     }
+}
+
+@media only screen and (min-width: 811px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 251px;
+        padding-inline: 165px;
+    }
+
+    .container p {
+        width: 45ch;
+    }
+
+    .flow {
+        --margin-top: 24px;
+    }
+
 }
