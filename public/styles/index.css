@@ -96,6 +96,11 @@ ol[role="list"] {
 	list-style: none;
 }
 
+ul,
+ol {
+	padding: 0;
+}
+
 /* Set core root defaults */
 html:focus-within {
 	scroll-behavior: smooth;
@@ -274,8 +279,6 @@ select {
 /* primary-header and primary-navigation */
 .primary-header {
     align-items: center ;
-    margin: 40px 0 0 55px;
-    justify-content: space-between;
 }
 
 .logo {
@@ -286,10 +289,7 @@ select {
 .primary-navigation {
     gap: 50px;
     list-style: none;
-    padding: 34.5px 165px 0 123px;
-    margin: 0;
     background: hsl( var(--clr-dark) / .95);
-    background: lightskyblue;
 }
 
 .mobile-nav-toggle {
@@ -341,7 +341,6 @@ select {
 
     .primary-navigation {
         gap: 0;
-        padding: 0;
         margin: 0;
         position: fixed;
         z-index: 1000;
@@ -410,6 +409,7 @@ select {
 
     .primary-navigation {
         gap: 37px;
+        margin: 0;
         padding: 35px 48px 0 48px;
     }
 
@@ -430,6 +430,42 @@ select {
     
     .primary-navigation > li.active {
         border-color: hsl( var(--clr-white) / 1); 
+    }
+}
+
+@media only screen and (min-width: 811px) {
+    .primary-header {
+        margin: 40px 0 0 55px;
+        justify-content: space-between;
+    }
+
+    .primary-header::after {
+        content: '';
+        display: block;
+        position: relative;
+        height: 1px;
+        width: 100%;
+        margin-right: -30px;
+        background: hsl( var(--clr-white) / .25);
+        order: 1;
+    }
+    
+    nav {
+       order: 2;
+    }
+
+    .logo {
+        margin-left: 55px;
+        margin-right: calc(64px + 48px);
+    } 
+
+    .primary-navigation {
+        padding-top: 34.5px;
+        padding-inline: clamp(10px, 7vw, 123px);
+    }
+
+    .primary-navigation > li {
+        padding-bottom: 31.5px;
     }
 }
 
