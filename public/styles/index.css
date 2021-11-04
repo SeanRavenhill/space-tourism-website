@@ -1,6 +1,6 @@
-/* ------------------- */
-/* Custom properties   */
-/* ------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Custom properties                                                                                                                     */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 :root {
 	/* Colors */
@@ -9,15 +9,15 @@
 	--clr-white: 0 0% 100%;
 
 	/* Font-Sizes */
-	--fs-h1: 9.375rem; /* 150px */
-	--fs-h2: 6.25rem; /* 100px */
-	--fs-h3: 3.5rem; /* 56px */
-	--fs-h4: 2rem; /* 32px */
-	--fs-h5: 1.75rem; /* 28px */
-	--fs-sub-h1: 1.75rem; /* 28px */
-	--fs-sub-h2: 0.875rem; /* 14px */
-	--fs-nav: 1rem; /* 16px */
-	--fs-body: 1.125rem; /* 18px */
+	--fs-h1: 9.375rem;          /* 150px */
+	--fs-h2: 6.25rem;           /* 100px */
+	--fs-h3: 3.5rem;            /* 56px */
+	--fs-h4: 2rem;              /* 32px */
+	--fs-h5: 1.75rem;           /* 28px */
+	--fs-sub-h1: 1.75rem;       /* 28px */
+	--fs-sub-h2: 0.875rem;      /* 14px */
+	--fs-nav: 1rem;             /* 16px */
+	--fs-body: 1.125rem;        /* 18px */
 
 	/* Letter Spacings */
 	--fls-1: 4.75px;
@@ -30,19 +30,19 @@
 	--ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media only screen and (max-width: 570px) {
-	:root {
-		--fs-h1: 5rem; /* 80px */
-		--fs-h2: 3.5rem; /* 56px */
-		--fs-h3: 1.5rem; /* 24px */
-		--fs-h4: 1rem; /* 16px */
-		--fs-h5: 1rem; /* 16px */
-		--fs-body: 0.9375rem; /* 15px */
+@media only screen and (max-width: 767px)  {
+    :root {
+		--fs-h1: 5rem;          /* 80px */
+		--fs-h2: 3.5rem;        /* 56px */
+		--fs-h3: 1.5rem;        /* 24px */
+		--fs-h4: 1rem;          /* 16px */
+		--fs-h5: 1rem;          /* 16px */
+		--fs-body: 0.9375rem;   /* 15px */
 	}
 }
 
-@media only screen and (min-width: 570px) and (max-width: 810px) {
-	:root {
+@media only screen and (min-width: 768px) {
+    :root {
 		--fs-h2: 5rem; /* 80px */
 		--fs-h3: 2.5rem; /* 40px */
 		--fs-h4: 1.5rem; /* 24px */
@@ -52,9 +52,9 @@
 	}
 }
 
-/* ------------------- */
-/* Reset               */
-/* ------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Reset                                                                                                                                 */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Sean Ravenhill modification of https://piccalil.li/blog/a-modern-css-reset/ */
 
@@ -155,9 +155,10 @@ select {
 	}
 }
 
-/* ------------------- */
-/* Utility classes     */
-/* ------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Utility classes                                                                                                                       */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
 .flex { display: flex; }
 
 .grid { display: grid; }
@@ -177,7 +178,7 @@ select {
 	margin: -1px;
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
-	white-space: nowrap; /* added line */
+	white-space: nowrap;
 	border: 0;
 }
 
@@ -218,15 +219,16 @@ select {
 	line-height: 1.1;
 }
 
-.line-height-1 {line-height: 32px;}
-.line-height-2 {line-height: 28px;}
-.line-height-3 {line-height: 25px;}
+.line-height-1 { line-height: 32px; }
+.line-height-2 { line-height: 28px; }
+.line-height-3 { line-height: 25px; }
 
-/* ------------------- */
-/* Components          */
-/* ------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Components                                                                                                                            */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* large-btn */
+
 .large-btn {
     display: inline-grid;
     justify-content: center;
@@ -246,10 +248,11 @@ select {
 }
 
 /* large-btn specific Media Queries */
-@media only screen and (max-width: 570px) {
+
+@media only screen and (max-width: 767px) {
     .large-btn {
-        margin-top: 81px;
         font-size: 1.25rem;
+        margin-top: 81px;
         width: 150px;
         height: 150px;
     }
@@ -260,7 +263,7 @@ select {
     }
 }
 
-@media only screen and (min-width: 571px) and (max-width: 810px) {
+@media only screen and (min-width: 768px) {
 	.large-btn {
         margin-top: 156px;
         width: 242px;
@@ -273,7 +276,8 @@ select {
     }
 }
 
-/* primary-header and primary-navigation */
+/* .primary-header and .primary-navigation */
+
 .primary-header {
     align-items: center ;
 }
@@ -324,8 +328,9 @@ select {
     border-color: hsl( var(--clr-white) / 1); 
 }
 
-/* primary-header and primary-navigation specific Media Queries  */
-@media only screen and (max-width: 570px) {
+/* .primary-header and .primary-navigation specific media queries  */
+
+@media only screen and (max-width: 767px) {
     .primary-header {
         margin: 24px 24px 0 24px;
         justify-content: space-between;
@@ -340,11 +345,11 @@ select {
         gap: 0;
         margin: 0;
         position: fixed;
-        z-index: 1000;
         flex-direction: column;
         inset: 0 0 0 121px;
         transform: translateX(100%);
         transition: transform 500ms ease-in-out;
+        z-index: 1000;
     }
 
     .primary-navigation[data-visible="true"] {
@@ -353,16 +358,16 @@ select {
 
     .mobile-nav-toggle {
         display: block;
-        order: 3;
-        z-index: 2000;
+        width: 24px;
+        height: 21px;
+        border: 0;
         background: transparent;
         background-image: url(../assets/shared/icon-hamburger.svg);
         background-repeat: no-repeat;
         background-position: center center;
-        width: 24px;
-        height: 21px;
-        border: 0;
         cursor: pointer;
+        z-index: 2000;
+        order: 3;
     }
 
     .mobile-nav-toggle:focus-visible {
@@ -379,12 +384,12 @@ select {
     }
 
     .primary-navigation > li {
-        cursor: pointer;
         line-height: 41px;
         padding: 0;
         margin-bottom: 2px;
         border-bottom: 0;
         border-right: 4px solid hsl( var(--clr-white) / 0 );
+        cursor: pointer;
     }
     
     .primary-navigation > li:hover,
@@ -397,7 +402,7 @@ select {
     }
 }
 
-@media only screen and (min-width: 571px) and (max-width: 810px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
     .primary-header {
         justify-content: space-between;
         align-items: center;
@@ -415,9 +420,9 @@ select {
     }
 
     .primary-navigation > li {
-        cursor: pointer;
         padding-bottom: 34px;
         border-bottom: 3px solid hsl( var(--clr-white) / 0 );
+        cursor: pointer;
     }
     
     .primary-navigation > li:hover,
@@ -430,7 +435,7 @@ select {
     }
 }
 
-@media only screen and (min-width: 811px) {
+@media only screen and (min-width: 960px) {
     .primary-header {
         margin: 40px 0 0 0;
         justify-content: space-between;
@@ -466,11 +471,14 @@ select {
     }
 }
 
-/* ------------------- */
-/* Layout              */
-/* ------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Layouts                                                                                                                               */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* Home */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* .home Layout                                                                                                                          */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
 .home {
     background-image: url(../assets/home/background-home-desktop.jpg);
     background-repeat: no-repeat;
@@ -478,8 +486,9 @@ select {
     background-position: center center;
 }
 
-/* Home specific Media Queries */
-@media only screen and (max-width: 570px) {
+/* .home specific media queries */
+
+@media only screen and (max-width: 767px)  {
     .container {
         flex-direction: column;
         align-items: center;
@@ -488,19 +497,27 @@ select {
         text-align: center;
     }
 
+    .container p {
+        max-width: 50ch;
+    }
+
 	.home {
         background-image: url(../assets/home/background-home-mobile.jpg);
         background-position: center bottom;
     }
 }
 
-@media only screen and (min-width: 571px) and (max-width: 810px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
     .container {
+        text-align: center;
         flex-direction: column;
         align-items: center;
         margin-top: 106px;
         padding-inline: 159px;
-        text-align: center;
+    }
+
+    .container p {
+        max-width: 60ch;
     }
 
     .flow {
@@ -513,8 +530,9 @@ select {
     }
 }
 
-@media only screen and (min-width: 811px) {
+@media only screen and (min-width: 960px) {
     .container {
+        gap: 50px;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
@@ -523,11 +541,44 @@ select {
     }
 
     .container p {
-        width: 45ch;
+        max-width: 45ch;
     }
 
     .flow {
         --margin-top: 24px;
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* Media Queries Bank                                                                                                                    */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Mobile Devices i.e. any screen of 767px and less */
+@media only screen and (max-width: 767px)  {
+    
+}
+
+/* Tablet Devices in Portrait i.e. any screen from 768px to 959px */
+@media only screen and (min-width: 768px) and (max-width: 959px)  {
+    
+}
+
+/* Desktop Screen & Tablet Devices in Landscape i.e. any screen from 960px to 1599px */
+@media only screen and (min-width: 960px) and (max-width: 1599px)  {
+    
+}
+
+/* Large Screen Devices i.e. any screen of 1600px and more */
+@media only screen and (min-width: 1600px) {
+    
 }
