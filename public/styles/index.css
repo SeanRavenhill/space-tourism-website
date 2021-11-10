@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
-/* Custom properties                                                                                                                     */
+/* Custom Properties                                                                                                                     */
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 :root {
@@ -156,7 +156,7 @@ select {
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
-/* Utility classes                                                                                                                       */
+/* Utility Classes                                                                                                                       */
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 .flex { display: flex; }
@@ -165,9 +165,11 @@ select {
 
 .block { display: block; }
 
+.flow { margin-top: var(--margin-top, 16px); }
+
 .container { margin-inline: auto; }
 
-.flow { margin-top: var(--margin-top, 16px); }
+.grid-container { display: grid; }
 
 /* hides content intented for screen readers */
 .sr-only {
@@ -247,7 +249,7 @@ select {
     outline: 88px solid hsl( var(--clr-white) / .1);
 }
 
-/* large-btn specific Media Queries */
+/* large-btn specific media queries */
 
 @media only screen and (max-width: 767px) {
     .large-btn {
@@ -265,7 +267,6 @@ select {
 
 @media only screen and (min-width: 768px) {
 	.large-btn {
-        margin-top: 156px;
         width: 242px;
         height: 242px;
     }
@@ -489,7 +490,14 @@ select {
 /* .home specific media queries */
 
 @media only screen and (max-width: 767px)  {
-    .container {
+    /* .grid-container {
+        padding-inline: 1rem;
+    }
+
+    .grid-container * {
+        max-width: 46ch;
+    } */
+    /* .container {
         flex-direction: column;
         align-items: center;
         margin-top: 48px;
@@ -499,7 +507,7 @@ select {
 
     .container p {
         max-width: 50ch;
-    }
+    } */
 
 	.home {
         background-image: url(../assets/home/background-home-mobile.jpg);
@@ -508,7 +516,7 @@ select {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-    .container {
+    /* .container {
         text-align: center;
         flex-direction: column;
         align-items: center;
@@ -522,7 +530,7 @@ select {
 
     .flow {
         --margin-top: 24px;
-    }
+    } */
 
 	.home {
         background-image: url(../assets/home/background-home-tablet.jpg);
@@ -531,24 +539,55 @@ select {
 }
 
 @media only screen and (min-width: 960px) {
-    .container {
+    .grid-container {
+        text-align: left;
+        align-items: flex-end;
+        margin-inline: 165px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-container span {
+        margin-left: -12px;
+    }
+    
+    .grid-container > *:first-child {
+        border: 1px red solid;
+        margin-right: 100px;
+        grid-column: 1;
+    }
+
+    .grid-container > *:last-child {
+        border: 1px red solid;
+        justify-self: right;
+        grid-column: 2;
+    }
+    
+    .grid-container--home {
+        align-items: space-between;
+        bottom: 0;
+        padding-bottom: 0;
+    }
+
+     /* .container {
         gap: 50px;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
         margin-top: 251px;
         padding-inline: 165px;
-    }
+    } */
 
-    .container p {
-        max-width: 45ch;
-    }
+    .grid-container * {
+        max-width: 46ch;
+    } 
 
     .flow {
         --margin-top: 24px;
     }
-
 }
+
+
+
 
 
 
